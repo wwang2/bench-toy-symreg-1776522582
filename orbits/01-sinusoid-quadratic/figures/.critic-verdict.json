@@ -1,0 +1,23 @@
+{
+  "verdict": "ACCEPT",
+  "rounds": 1,
+  "invoked_via": "Agent(subagent_type=figure-critic)",
+  "overall_comment": "Both required figures are present, readable, and communicate the zero-MSE result clearly with baseline comparison and residual-vs-noise-band diagnostic; minor polish would help but nothing blocking.",
+  "figures": [
+    {
+      "path": "orbits/01-sinusoid-quadratic/figures/narrative.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Suptitle visually collides with subplot titles.", "fix": "Raise suptitle y or shorten."},
+        {"severity": "MINOR", "issue": "Bright red line color deviates from muted palette in style.md.", "fix": "Use #C44E52 or #4C72B0."}
+      ]
+    },
+    {
+      "path": "orbits/01-sinusoid-quadratic/figures/results.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Held-out test MSE bar invisible on symlog (value 0.0).", "fix": "Annotate exact-zero with arrow or floor marker."},
+        {"severity": "MINOR", "issue": "Stacked titles create vertical crowding.", "fix": "Collapse to one concise suptitle."},
+        {"severity": "MINOR", "issue": "No seed variance error bars.", "fix": "Add note that eval is deterministic on clean test set."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "reviewer": "orbit-reviewer",
+  "orbit": "01-sinusoid-quadratic",
+  "code_quality": {
+    "status": "clean",
+    "findings": [
+      {"tag": "CODE NOTE", "text": "solution.py docstring independently re-derives all four coefficients (A, B, C, D) — matches log.md; both agree on f(x)=sin(x)+0.1*x^2."},
+      {"tag": "CODE NOTE", "text": "evaluator.py accepts --seed but generate_test_data() ignores it, so all three seeds return identical MSE=0 (evaluator quirk, not a solution defect)."}
+    ]
+  },
+  "significance": {
+    "verified_metric": 0.0,
+    "delta_baseline_abs": 1.0,
+    "delta_baseline_rel_pct": 100.0,
+    "delta_best_abs": 1.0,
+    "delta_best_rel_pct": 100.0,
+    "vs_threshold": "above",
+    "vs_2sigma": "above",
+    "assessment": "Significant",
+    "suspicious_improvement": true
+  },
+  "reproducibility": {
+    "status": "clean",
+    "findings": [
+      {"tag": "REPRODUCIBILITY", "text": "Closed-form deterministic; seed invariance expected. All three eval seeds return identical MSE=0."}
+    ]
+  },
+  "figures": {
+    "status": "has_issues",
+    "findings": [
+      {"tag": "FIGURE ISSUE", "path": "orbits/01-sinusoid-quadratic/figures/narrative.png", "text": "Missing panel labels (a)(b).", "fix": "Add ax.text(-0.12, 1.05, '(a)', transform=ax.transAxes)."},
+      {"tag": "FIGURE ISSUE", "path": "orbits/01-sinusoid-quadratic/figures/results.png", "text": "Missing panel labels (a)(b).", "fix": "Add panel labels per style.md."},
+      {"tag": "FIGURE ISSUE", "path": "orbits/01-sinusoid-quadratic/figures/results.png", "text": "Held-out MSE bar invisible on symlog (exact zero).", "fix": "Annotate exact-zero instead of plotting empty bar."}
+    ]
+  },
+  "quality_hints": {
+    "findings": [
+      {"tag": "QUALITY NOTE", "text": "No external SR benchmark paper cited. Advisory only."},
+      {"tag": "QUALITY NOTE", "text": "suspicious_improvement=true is fully explained: solution IS the exact ground-truth generator function. Not metric gaming."},
+      {"tag": "QUALITY NOTE", "text": "Evaluator --seed is silently ignored; three-seed eval is three identical runs."}
+    ]
+  },
+  "synopsis": "Orbit 01-sinusoid-quadratic correctly identifies f(x) = sin(x) + 0.1*x^2 by inspection, achieving exact zero MSE on the held-out test set. Code, derivation, and log prose are mutually consistent with no constraint violations. Only non-blocking figure polish issues remain."
+}
